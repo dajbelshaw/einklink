@@ -1,3 +1,5 @@
 # eink.link
 
-A basic, fast-loading website aimed to be used on e-reader web browsers. Uses [SimpleCSS](https://simplecss.org/)
+Links to websites that work well on basic web browsers including those that come with e-readers.
+
+Currently using (vanilla) [SimpleCSS](https://simplecss.org/).
