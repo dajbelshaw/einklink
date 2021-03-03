@@ -1,4 +1,4 @@
-/* Based on SimpleCSS.org */
+/* eink.css is based on simplecss.org */
 
 
 /* Set the global variables for everything. Change these to use your own fonts/colours. */
@@ -30,21 +30,6 @@
   --marked: #CCC;
   --disabled: #EFEFEF;
 }
-
-/* Dark theme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #212121;
-    --accent-bg: #2B2B2B;
-    --text: #DCDCDC;
-    --text-light: #ABABAB;
-    --border: #666;
-    --accent: #FFB300;
-    --accent-light: #FFECB3;
-    --code: #F06292;
-    --preformatted: #CCC;
-    --disabled: #111;
-  }
 
   img, video {
     opacity: .6;
@@ -131,7 +116,7 @@ nav a.current:hover {
 }
 
 footer {
-  margin-top: 4rem;
+  margin-top: 3rem;
   padding: 2rem 1rem 1.5rem 1rem;
   color: var(--text-light);
   font-size: .9rem;
