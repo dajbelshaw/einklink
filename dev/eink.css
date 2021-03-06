@@ -285,7 +285,8 @@ hr {
 mark {
     padding: 2px 5px;
     border-radius: 4px;
-    background: #CCC;
+    background: #EEE;
+    color: #000;
 }
 
 main img, main video {
