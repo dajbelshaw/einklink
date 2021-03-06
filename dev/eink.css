@@ -1,4 +1,4 @@
-/* eink.css is based on simplecss.org */
+/* eink.css is based on an even more simplified version of simplecss.org */
 
 
 html {
@@ -29,11 +29,7 @@ header {
   margin-bottom: 3rem;
 }
 
-/* Reduces header padding on smaller screens */
-@media only screen and (max-width: 1200px) {
-  header {
-    padding: 1rem;
-  }
+/* Centre the navigation buttons */
 
   nav {
     text-align: center;
