@@ -25,12 +25,11 @@ main {
 header {
 	background: #333;
 	border-bottom: 1px solid #EEE;
-  padding: 1.5rem 15rem;
+  padding: 1.5rem;
   margin-bottom: 3rem;
 }
 
 /* Centre the navigation buttons */
-
   nav {
     text-align: center;
   }
@@ -45,6 +44,8 @@ header p {
 /* Fix header line height when title wraps */
 header h1 {
   line-height: 1.1;
+  text-align: center;
+
 }
 
 /* Format navigation */
@@ -87,7 +88,6 @@ footer {
 h1 {
   margin-top: 1.7rem;
   text-align: center;
-
 }
 
 h2 {
