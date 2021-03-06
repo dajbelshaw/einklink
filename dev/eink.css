@@ -28,11 +28,10 @@ header {
 }
 
 
-  nav {
+nav {
 	text-align: center;
 }
 
-/* Format navigation */
 nav {
   font-size: 1rem;
   line-height: 2;
@@ -41,9 +40,9 @@ nav {
 
 nav a {
   margin: 1rem 1rem 0 0;
-  border: 1px solid var(--border);
+  border: 1px solid #EEE;
   border-radius: 5px;
-  color: var(--text) !important;
+  color: #FFF;
   display: inline-block;
   padding: .1rem 1rem;
   text-decoration: none;
@@ -51,8 +50,8 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--accent) !important;
-  border-color: var(--accent);
+  color: #EEE !important;
+  border-color: #EEE;
 }
 
 nav a.current:hover {
