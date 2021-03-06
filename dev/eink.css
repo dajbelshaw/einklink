@@ -172,3 +172,13 @@ blockquote {
 	opacity: .8;
 	font-style: italic;
 }
+
+
+footer {
+  margin-top: 4rem;
+  padding: 2rem 1rem 1.5rem 1rem;
+  color: #FFF;
+  font-size: .9rem;
+  text-align: center;
+  border-top: 1px solid #EEE;
+}
