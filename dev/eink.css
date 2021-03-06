@@ -9,7 +9,7 @@ html {
 body {
   color: #FFF;
   background: #666;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.75;
   margin: 0;
 }
@@ -89,12 +89,14 @@ footer {
 
 /* Format headers */
 h1 {
-  font-size: 1.563rem;
+  font-size: 2.441rem;
   margin-top: 1.7rem;
+  text-align: center;
+
 }
 
 h2 {
-  font-size: 1.25rem;
+  font-size: 1.953rem;
   margin-top: 1.7rem;
   text-align: center;
 }
