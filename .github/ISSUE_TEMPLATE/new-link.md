@@ -2,7 +2,7 @@
 name: New link
 about: Propose a new resource for eink.link
 title: ''
-labels: ''
+labels: link
 assignees: ''
 
 ---
