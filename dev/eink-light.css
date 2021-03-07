@@ -21,7 +21,7 @@ main {
 
 
 header {
-	background: #333;
+	background: #eee;
 	border-bottom: 1px solid #333;
 	padding: 1.5rem;
 	margin-bottom: 3rem;
@@ -78,7 +78,7 @@ h2 {
 
 a,
 a:visited {
-	color: #333;
+	color: #000;
 }
 
 a button,
@@ -120,8 +120,8 @@ input[type="button"]:enabled:hover {
 
 details {
 	padding: .6rem 1rem;
-	background: #333;
-	border: 1px solid #CCC;
+	background: #eee;
+	border: 1px solid #333;
 	border-radius: 5px;
 	margin-bottom: 1rem;
 }
