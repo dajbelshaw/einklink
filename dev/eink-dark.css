@@ -9,14 +9,14 @@ body {
 	background: #666;
 	font-size: 24px;
 	line-height: 1.75;
-	margin: 1;
+	margin: 0;
 }
 
 
 main {
 	margin: 1rem auto 0;
 	max-width: 45rem;
-	padding: 0 .5rem;
+	padding: 0 1.5rem;
 }
 
 
