@@ -157,10 +157,12 @@ hr {
 }
 
 mark {
-	padding: 2px 5px;
+	padding: 4px 8px;
 	border-radius: 4px;
 	background: #EEE;
 	color: #000;
+        font-size:1.25rem;
+
 }
 
 
