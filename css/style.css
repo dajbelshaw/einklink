@@ -1,17 +1,43 @@
 /* eink.css is based on an even more simplified version of simplecss.org */
 
+:root {
+	color-scheme: light dark;
+	/* START LIGHT */
+	--fg-color: #000;
+	--bg-color: #FFF;
+	--header-bg-color: #EEE;
+	--header-fg-color: #000;
+	--border-color: #333;
+	--button-bg-color: #CCC;
+	--button-fg-color: #000;
+	/* END LIGHT */
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* START DARK */
+		--fg-color: #FFF;
+		--bg-color: #666;
+		--header-bg-color: #333;
+		--header-fg-color: #FFF;
+		--border-color: #EEE;
+		--button-bg-color: #EEE;
+		--button-fg-color: #000;
+		/* END DARK */
+	}
+}
+
 html {
-  font-family: sans-serif;
+	font-family: sans-serif;
 }
 
 body {
-	color: #FFF;
-	background: #666;
+	color: var(--fg-color);
+	background: var(--bg-color);
 	font-size: 24px;
 	line-height: 1.75;
 	margin: 0;
 }
-
 
 /* Styling a div within main to better handle the basic browser in Kindle devices */
 main div {
@@ -26,10 +52,10 @@ main {
 	text-align: center;
 }
 
-
 header {
-	background: #333;
-	border-bottom: 1px solid #EEE;
+	color: var(--header-fg-color);
+	background: var(--header-bg-color);
+	border-bottom: 1px solid var(--border-color);
 	padding: 1.5rem;
 	margin-bottom: 3rem;
 }
@@ -40,31 +66,52 @@ nav {
 }
 
 nav {
-  font-size: 1rem;
-  line-height: 2;
-  padding: 1rem 0;
+	font-size: 1rem;
+	line-height: 2;
+	padding: 1rem 0;
 }
 
 nav a {
-  margin: 1rem 1rem 0 0;
-  border: 1px solid #EEE;
-  border-radius: 5px;
-  color: #FFF;
-  display: inline-block;
-  padding: .1rem 1rem;
-  text-decoration: none;
-  transition: .4s;
+	margin: 0 1rem 0;
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+	color: var(--fg-color);
+	display: inline-block;
+	padding: .1rem 1rem;
+	text-decoration: none;
+	transition: .4s;
 }
 
 nav a:hover {
-  color: #EEE !important;
-  border-color: #EEE;
+	color: var(--border-color) !important;
+	border-color: var(--border-color);
 }
 
 nav a.current:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
 
+nav .linkgroup {
+	margin: 0 1rem 0;
+}
+nav .linkgroup a {
+	margin: 0 0 0 -1px;
+	border-radius: 0;
+}
+nav .linkgroup a:first-child {
+	margin: 0;
+	border-radius: 5px 0 0 5px;
+}
+nav .linkgroup a:last-child {
+	border-radius: 0 5px 5px 0;
+}
+
+.auto .linkgroup a.autolink,
+.dark .linkgroup a.darklink,
+.light .linkgroup a.lightlink,
+.linkgroup a.selected {
+	text-decoration: underline;
+}
 
 header h1 {
 	line-height: 1.1;
@@ -85,7 +132,7 @@ h2 {
 
 a,
 a:visited {
-	color: #EEE;
+	color: var(--fg-color);
 }
 
 a button,
@@ -95,9 +142,9 @@ input[type="reset"],
 input[type="button"] {
 	border: none;
 	border-radius: 5px;
-	background: #CCC;
+	background: var(--button-bg-color);
 	font-size: 1rem;
-	color: #333;
+	color: var(--button-fg-color);
 	padding: .7rem .9rem;
 	margin: .5rem 0;
 	transition: .4s;
@@ -127,8 +174,8 @@ input[type="button"]:enabled:hover {
 
 details {
 	padding: .6rem 1rem;
-	background: #333;
-	border: 1px solid #CCC;
+	background: var(--header-bg-color);
+	border: 1px solid var(--border-color);
 	border-radius: 5px;
 	margin-bottom: 1rem;
 }
@@ -158,35 +205,34 @@ ul {
 
 
 hr {
-	color: #EEE;
+	color: var(--border-color);
 	border-top: 1px;
 	margin: 1rem auto;
 }
 
-mark {
+a.addlink {
 	padding: 4px 8px;
 	border-radius: 4px;
-	background: #EEE;
-	color: #000;
-        font-size:1.25rem;
-
+	background: var(--button-bg-color);
+	color: var(--button-fg-color);
+	font-size:1.25rem;
 }
 
 
 blockquote {
 	margin: 2rem 0 2rem 2rem;
 	padding: .4rem .8rem;
-	border-left: .35rem solid #EEE;
+	border-left: .35rem solid var(--border-color);
 	opacity: .8;
 	font-style: italic;
 }
 
 
 footer {
-  margin-top: 4rem;
-  padding: 2rem 1rem 1.5rem 1rem;
-  color: #FFF;
-  font-size: .9rem;
-  text-align: center;
-  border-top: 1px solid #EEE;
+	margin-top: 4rem;
+	padding: 2rem 1rem 1.5rem 1rem;
+	color: var(--fg-color);
+	font-size: .9rem;
+	text-align: center;
+	border-top: 1px solid var(--border-color);
 }
