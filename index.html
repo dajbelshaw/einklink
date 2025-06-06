@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html class="" lang="en">
   <head>
-    <title>eink.link</title>
     <meta charset="UTF-8">
+    <title>eink.link</title>
     <meta property="og:title" content="eink.link" />
     <meta property="og:site_name" content="eink.link" />
     <meta property="twitter:title" content="eink.link" />
@@ -15,24 +14,24 @@
     <meta property="og:url" content="https://eink.link/" />
     <meta name="twitter:card" content="summary" />
     <link rel="canonical" href="https://eink.link/" />
-    <link rel="stylesheet" href="/css/light.min.css">
-    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="css/style.css" AUTOLIGHTDARK>
   </head>
 
   <body>
-    
+
     <header>
       <h1>eink.link</h1>
       <nav>
-        <a href="about.html">About</a>
-        <a href="index-dark.html">Dark mode</a>
+        <span class="linkgroup"><a href="index.html" AUTOLIGHTDARK class="selected">Home</a><a href="about.html" AUTOLIGHTDARK>About</a></span>
+        <span class="linkgroup"><a href="index.html" class="autolink">Auto</a><a href="index-light.html" class="lightlink">Light</a><a href="index-dark.html" class="darklink">Dark</a></span>
       </nav>
     </header>
 
     <main>
       <div>
-        
+
         <p>Links to websites that work well on basic web browsers including those that come with e-readers.</p>
+
         <details>
         <summary>Search</summary>
         <p>
@@ -45,7 +44,7 @@
           </ul>
         </p>
         </details>
-        
+
         <details>
         <summary>Ebooks</summary>
         <p>
@@ -55,7 +54,7 @@
           </ul>
         </p>
         </details>
-        
+
         <details>
         <summary>News</summary>
         <p>
@@ -73,7 +72,7 @@
           </ul>
         </p>
         </details>
-        
+
         <details>
         <summary>Weather</summary>
         <p>
@@ -83,7 +82,7 @@
           </ul>
         </p>
         </details>
-        
+
         <details>
         <summary>Social</summary>
         <p>
@@ -93,7 +92,7 @@
           </ul>
         </p>
         </details>
-        
+
         <details>
         <summary>Tech</summary>
         <p>
@@ -114,20 +113,20 @@
           <ul>
             <li><a href="https://e-ink.club/">e-ink.club</a> - brain training games</li>
             <li><a href="https://gdir.telae.net/">gdir.telae.net</a> - text-based version of Google Maps</li>
-            <li><a href="https://ifconfig.io">ifconfig.io - display your IP address and other useful technical information</li>
+            <li><a href="https://ifconfig.io">ifconfig.io</a> - display your IP address and other useful technical information</li>
           </ul>
         </p>
         </details>
-        
+
       </div>
     </main>
-    
+
     <footer>
-      <p><a href="https://github.com/dajbelshaw/einklink/issues/new/choose"><mark>Add a link!</mark></a></p>
+      <p><a href="https://github.com/dajbelshaw/einklink/issues/new/choose" class="addlink">Add a link!</a></p>
       <p>(ﾉ&gt;ω&lt;)ﾉ :｡･:*:･ﾟ’★,｡･:*:･ﾟ’☆</p>
       <p><a href="https://github.com/dajbelshaw/einklink">Open source</a></p>
     </footer>
-    
+
   </body>
 
 </html>
