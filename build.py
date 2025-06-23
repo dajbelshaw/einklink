@@ -116,6 +116,10 @@ def main():
         shutil.rmtree(BUILDDIR)
     BUILDDIR.mkdir(parents=True, exist_ok=True)
 
+    COPY_THESE_FILES = [ 'CNAME' ]
+    for file in COPY_THESE_FILES:
+        shutil.copy2(SRCDIR / file, BUILDDIR / file)
+
     COPY_THESE_DIRS = [ 'img' ]
     for subdir in COPY_THESE_DIRS:
         shutil.copytree(SRCDIR / subdir, BUILDDIR / subdir)
