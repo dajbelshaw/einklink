@@ -77,11 +77,13 @@ body {
 
 /* Styling a div within main to better handle the basic browser in Kindle devices */
 main div {
-	display: inline-block;
-	margin: 1rem auto 0;
+	display: block;
+	width: 100%;
 	max-width: 45rem;
+	margin: 1rem auto 0;
 	padding: 0 3rem; /* doubled the padding on left and right to avoid stretching to the edge and have some breathing space */
 	text-align: left;
+	box-sizing: border-box;
 }
 
 main {
