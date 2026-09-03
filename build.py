@@ -2,6 +2,7 @@
 
 import re
 import shutil
+from functools import reduce
 from pathlib import Path
 
 
@@ -53,6 +54,71 @@ def generate_light_and_dark_html_versions(src):
     dst_lght.write_text(change_html_source_code(source_code, 'light'))
 
 
+def generate_light_and_dark_css_versions(src):
+    '''Generates literal light/dark CSS variants alongside the var()-based original.
+
+    The 'auto' file (unchanged, still using var(--x)) is for browsers that
+    support both CSS custom properties and prefers-color-scheme - which
+    covers the large majority of devices still in use, including modern
+    e-readers.
+
+    The forced light/dark toggle links need to actually work on browsers
+    that don't support var() at all (pre-2016 WebKit, e.g. a Kindle
+    Voyage's built-in browser) - clicking "Dark" there sets an HTML class
+    that a var()-based stylesheet can't react to, since the browser never
+    evaluates var() in the first place. So for -light.css/-dark.css we
+    substitute every var(--x) with its literal value at build time,
+    exactly as this site did before CSS variables were assumed supported.
+    '''
+    basename = src.relative_to(SRCDIR)
+    dst_auto = BUILDDIR / basename
+    dst_dark = BUILDDIR / basename.with_name(basename.name.replace('.css', '-dark.css'))
+    dst_lght = BUILDDIR / basename.with_name(basename.name.replace('.css', '-light.css'))
+
+    auto = []
+    lght = []
+    dark = []
+    vars = {'light': {}, 'dark': {}}
+    processing = 'normal'
+    with open(src) as f:
+        for line in f:
+            auto.append(line)
+            # Matching the special comments that mark the light/dark variables.
+            match line.replace('/*', '').replace('*/', '').strip():
+                case 'START LIGHT':
+                    processing = 'light'
+                    continue
+                case 'START DARK':
+                    processing = 'dark'
+                    continue
+                case 'END LIGHT' | 'END DARK':
+                    processing = 'normal'
+                    continue
+            # Processing the rest of the lines.
+            match processing:
+                case 'normal':
+                    lght.append(reduce(
+                        lambda s, rep: s.replace(rep[0], rep[1]),
+                        vars['light'].items(),
+                        line
+                    ))
+                    dark.append(reduce(
+                        lambda s, rep: s.replace(rep[0], rep[1]),
+                        vars['dark'].items(),
+                        line
+                    ))
+                case 'light' | 'dark':
+                    # If we are processing the light/dark variables, we store them.
+                    if line.strip() == '':
+                        continue
+                    if match := re.match(r'(--[-a-zA-Z0-9]+): *([^;]+);', line.strip()):
+                        vars[processing]['var({})'.format(match.group(1))] = match.group(2)
+
+    dst_auto.write_text(''.join(auto))
+    dst_dark.write_text(''.join(dark))
+    dst_lght.write_text(''.join(lght))
+
+
 def main():
     global SRCDIR, BUILDDIR
     SRCDIR = Path('.').resolve()
@@ -67,13 +133,18 @@ def main():
     for file in COPY_THESE_FILES:
         shutil.copy2(SRCDIR / file, BUILDDIR / file)
 
-    COPY_THESE_DIRS = [ 'img', 'css' ]
+    COPY_THESE_DIRS = [ 'img' ]
     for subdir in COPY_THESE_DIRS:
         shutil.copytree(SRCDIR / subdir, BUILDDIR / subdir)
 
     # Copying and preparing the HTML files.
     for htmlfile in SRCDIR.glob('*.html'):
         generate_light_and_dark_html_versions(htmlfile)
+
+    # Copying and preparing the CSS files.
+    (BUILDDIR / 'css').mkdir(parents=True, exist_ok=True)
+    for cssfile in SRCDIR.glob('css/*.css'):
+        generate_light_and_dark_css_versions(cssfile)
 
 
 
