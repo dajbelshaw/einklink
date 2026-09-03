@@ -3,19 +3,24 @@
 :root {
 	color-scheme: light dark;
 	/* START LIGHT */
-	--fg-color: #000;
-	--bg-color: #FFF;
-	--header-bg-color: #EEE;
-	--header-fg-color: #000;
-	--border-color: #333;
-	--button-bg-color: #CCC;
-	--button-fg-color: #000;
+	--fg-color: #1A1A1A;
+	--bg-color: #FAF7F2;
+	--header-bg-color: #F0EAE0;
+	--header-fg-color: #1A1A1A;
+	--border-color: #C9BFAE;
+	--button-bg-color: #E4DCCB;
+	--button-fg-color: #1A1A1A;
+	--muted-fg-color: #6B6558;
 	/* END LIGHT */
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
 		/* START DARK */
+		/* A mid-grey rather than near-black background is deliberate: E Ink
+		   displays aren't backlit, so true black just means more ink with
+		   no contrast benefit, and a mid-grey holds up better on the panels
+		   that do support a dark palette. */
 		--fg-color: #FFF;
 		--bg-color: #666;
 		--header-bg-color: #333;
@@ -23,6 +28,7 @@
 		--border-color: #EEE;
 		--button-bg-color: #EEE;
 		--button-fg-color: #000;
+		--muted-fg-color: #CCC;
 		/* END DARK */
 	}
 }
@@ -32,13 +38,14 @@
    :root.light/.dark has higher specificity than the plain :root rules above,
    including the one inside the dark media query, so it always wins. */
 :root.light {
-	--fg-color: #000;
-	--bg-color: #FFF;
-	--header-bg-color: #EEE;
-	--header-fg-color: #000;
-	--border-color: #333;
-	--button-bg-color: #CCC;
-	--button-fg-color: #000;
+	--fg-color: #1A1A1A;
+	--bg-color: #FAF7F2;
+	--header-bg-color: #F0EAE0;
+	--header-fg-color: #1A1A1A;
+	--border-color: #C9BFAE;
+	--button-bg-color: #E4DCCB;
+	--button-fg-color: #1A1A1A;
+	--muted-fg-color: #6B6558;
 }
 
 :root.dark {
@@ -49,6 +56,7 @@
 	--border-color: #EEE;
 	--button-bg-color: #EEE;
 	--button-fg-color: #000;
+	--muted-fg-color: #CCC;
 }
 
 html {
@@ -58,9 +66,9 @@ html {
 body {
 	/* Plain fallback values first for browsers that can't parse var() at all -
 	   they'll ignore the invalid var() line below and keep this instead. */
-	color: #000;
+	color: #1A1A1A;
 	color: var(--fg-color);
-	background: #FFF;
+	background: #FAF7F2;
 	background: var(--bg-color);
 	font-size: 24px;
 	line-height: 1.75;
@@ -81,16 +89,23 @@ main {
 }
 
 header {
-	color: #000;
+	color: #1A1A1A;
 	color: var(--header-fg-color);
-	background: #EEE;
+	background: #F0EAE0;
 	background: var(--header-bg-color);
-	border-bottom: 1px solid #333;
+	border-bottom: 1px solid #C9BFAE;
 	border-bottom: 1px solid var(--border-color);
 	padding: 1.5rem;
 	margin-bottom: 3rem;
 }
 
+.tagline {
+	margin: 0 auto;
+	max-width: 30rem;
+	color: #6B6558;
+	color: var(--muted-fg-color);
+	font-size: .9rem;
+}
 
 nav {
 	text-align: center;
@@ -104,10 +119,10 @@ nav {
 
 nav a {
 	margin: 0 1rem 0;
-	border: 1px solid #333;
+	border: 1px solid #C9BFAE;
 	border: 1px solid var(--border-color);
 	border-radius: 5px;
-	color: #000;
+	color: #1A1A1A;
 	color: var(--fg-color);
 	display: inline-block;
 	padding: .1rem 1rem;
@@ -116,9 +131,9 @@ nav a {
 }
 
 nav a:hover {
-	color: #333 !important;
+	color: #C9BFAE !important;
 	color: var(--border-color) !important;
-	border-color: #333;
+	border-color: #C9BFAE;
 	border-color: var(--border-color);
 }
 
@@ -167,7 +182,7 @@ h2 {
 
 a,
 a:visited {
-	color: #000;
+	color: #1A1A1A;
 	color: var(--fg-color);
 }
 
@@ -178,10 +193,10 @@ input[type="reset"],
 input[type="button"] {
 	border: none;
 	border-radius: 5px;
-	background: #CCC;
+	background: #E4DCCB;
 	background: var(--button-bg-color);
 	font-size: 1rem;
-	color: #000;
+	color: #1A1A1A;
 	color: var(--button-fg-color);
 	padding: .7rem .9rem;
 	margin: .5rem 0;
@@ -212,9 +227,9 @@ input[type="button"]:enabled:hover {
 
 details {
 	padding: .6rem 1rem;
-	background: #EEE;
+	background: #F0EAE0;
 	background: var(--header-bg-color);
-	border: 1px solid #333;
+	border: 1px solid #C9BFAE;
 	border: 1px solid var(--border-color);
 	border-radius: 5px;
 	margin-bottom: 1rem;
@@ -223,6 +238,13 @@ details {
 summary {
 	cursor: pointer;
 	font-weight: bold;
+}
+
+summary .count {
+	font-weight: normal;
+	color: #6B6558;
+	color: var(--muted-fg-color);
+	font-size: .85rem;
 }
 
 details[open] {
@@ -238,14 +260,51 @@ details[open]>*:last-child {
 }
 
 
-ol,
-ul {
+ol {
 	padding-left: 3rem;
+}
+
+/* The directory listing: no bullets, a hairline divider between entries,
+   the link as the primary line and its description as a smaller muted
+   line beneath - reads as an index rather than a generic bulleted list. */
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul li {
+	padding: .6rem 0;
+	border-bottom: 1px solid #C9BFAE;
+	border-bottom: 1px solid var(--border-color);
+}
+
+ul li:last-child {
+	border-bottom: none;
+}
+
+ul li a {
+	display: block;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+ul li a:hover {
+	text-decoration: underline;
+}
+
+ul li .desc {
+	display: block;
+	margin-top: .15rem;
+	color: #6B6558;
+	color: var(--muted-fg-color);
+	font-size: .85rem;
+	line-height: 1.4;
 }
 
 
 hr {
-	color: #333;
+	color: #C9BFAE;
 	color: var(--border-color);
 	border-top: 1px;
 	margin: 1rem auto;
@@ -254,9 +313,9 @@ hr {
 a.addlink {
 	padding: 4px 8px;
 	border-radius: 4px;
-	background: #CCC;
+	background: #E4DCCB;
 	background: var(--button-bg-color);
-	color: #000;
+	color: #1A1A1A;
 	color: var(--button-fg-color);
 	font-size:1.25rem;
 }
@@ -265,7 +324,7 @@ a.addlink {
 blockquote {
 	margin: 2rem 0 2rem 2rem;
 	padding: .4rem .8rem;
-	border-left: .35rem solid #333;
+	border-left: .35rem solid #C9BFAE;
 	border-left: .35rem solid var(--border-color);
 	opacity: .8;
 	font-style: italic;
@@ -275,10 +334,10 @@ blockquote {
 footer {
 	margin-top: 4rem;
 	padding: 2rem 1rem 1.5rem 1rem;
-	color: #000;
+	color: #1A1A1A;
 	color: var(--fg-color);
 	font-size: .9rem;
 	text-align: center;
-	border-top: 1px solid #333;
+	border-top: 1px solid #C9BFAE;
 	border-top: 1px solid var(--border-color);
 }
